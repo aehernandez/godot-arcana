@@ -34,14 +34,14 @@ func _input(event: InputEvent):
     if event.is_action_released("camera_zoom_in"):
         create_tween().tween_property(
             self,
-             "zoom",
-             clamp(zoom + _zoom_inc_v, _zoom_limit_v_min, _zoom_limit_v_max),
-             zoom_speed
+            "zoom",
+            clamp(zoom + _zoom_inc_v, _zoom_limit_v_min, _zoom_limit_v_max),
+            zoom_speed
         )
     elif event.is_action_released("camera_zoom_out"):
         create_tween().tween_property(
             self,
-             "zoom",
-             clamp(zoom - _zoom_inc_v, _zoom_limit_v_min, _zoom_limit_v_max),
-             zoom_speed
+            "zoom",
+            clamp(zoom - _zoom_inc_v, _zoom_limit_v_min, _zoom_limit_v_max),
+            zoom_speed
         )
