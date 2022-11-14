@@ -1,25 +1,37 @@
 extends Node
 class_name ArcanaTask
 signal done
-signal canceled
 
-var autostart = true
+var autostart := true
 
-var _task_confirmed_done = false
+enum Status {
+    INACTIVE,
+    ACTIVE,
+    SUCCESS,
+    CANCELED,
+}
+
+var _status := Status.INACTIVE
+
+func get_status():
+    return _status
 
 func _exit_tree():
-    if not _task_confirmed_done:
-        emit_signal("canceled")
-
-func start():
-    pass
+    if _status != Status.SUCCESS:
+        _status = Status.CANCELED
+    emit_signal("done")
 
 func confirm_done():
-    _task_confirmed_done = true
-    emit_signal("done")
+    _status = Status.SUCCESS
     queue_free()
 
 func _ready():
     if autostart:
+        _status = Status.ACTIVE
         start()
+
+# Override this function with your desired behavior
+func start():
+    pass
+
         

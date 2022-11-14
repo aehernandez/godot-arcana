@@ -10,6 +10,6 @@ static func create(c: Callable) -> CallableTask:
 
 func start():
     assert(callable)
-    callable.call()
+    callable.call_deferred()
     confirm_done()
         
