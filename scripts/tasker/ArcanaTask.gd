@@ -33,5 +33,3 @@ func _ready():
 # Override this function with your desired behavior
 func start():
     pass
-
-        

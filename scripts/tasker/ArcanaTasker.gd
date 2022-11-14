@@ -12,7 +12,6 @@ static func create_as_delegate_to(parent: Node) -> ArcanaTasker:
 	parent.add_child(tasker)
 	return tasker
 
-
 # Runs the tasks returned by `get_tasks_func` in a loop. 
 # Each time a set of tasks is done the `done_with_tasks` signal is emitted and
 # another set of tasks are requested from the input callable.
@@ -38,6 +37,5 @@ func execute_tasks(tasks: Array):
 		assert(task.autostart)
 		add_child(task)
 		await task.done
-		assert(task.get_status() == task.Status.SUCCESS)
 	emit_signal("done_with_tasks")
 	_task_mutex.unlock()
