@@ -1,6 +1,6 @@
 @tool
-## Create a CollisionPolygon2D from an existing Sprite2D node
 class_name CollisionSprite2D extends CollisionPolygon2D
+## Create a CollisionPolygon2D from an existing Sprite2D node
 
 @export_node_path(Sprite2D) var sprite_path: NodePath:
     set(value):
