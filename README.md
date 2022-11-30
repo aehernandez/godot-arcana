@@ -2,8 +2,6 @@
 
 This repository is a growing collection of helpful Godot4 utility scripts, shaders, and node extensions.
 
-# References
-
 ## Scripts
 [UUID](scripts/uuid.gd) generates unique identification strings, based off of [binogure-studio/godot-uuid](https://github.com/binogure-studio/godot-uuid)'s implementation.
 
