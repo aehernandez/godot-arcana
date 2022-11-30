@@ -1,6 +1,6 @@
 class_name ZoomCamera2D extends Camera2D
 # 2D Camera that handles zoom levels via user input.
-# Ensure that `camera_zoom_in` and `camera_zoom_out` input events.
+# Ensure that `camera_zoom_in` and `camera_zoom_out` input events exist.
 
 @export var zoom_speed: float = 0.05
 @export var zoom_limit_max: float = 2.5:
