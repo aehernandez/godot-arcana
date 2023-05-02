@@ -11,6 +11,8 @@ This repository is a growing collection of helpful Godot4 utility scripts, shade
 
 [Tasker](scripts/tasker) is framework to create and run coroutines within Godot's node lifecycle from task primitives.
 
+[Find](scripts/find.gd) provides utilities for search operations.
+
 
 ## Nodes
 
