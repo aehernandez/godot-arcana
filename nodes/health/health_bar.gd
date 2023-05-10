@@ -20,19 +20,14 @@ var bg: ColorRect = ColorRect.new()
 		bg.color = color
 
 @export var node_path: NodePath = ^"../"
-@onready var node = get_node(node_path)
+@onready var node: Node = get_node(node_path)
 
-@export_range(0, 1, 0.1) var percent: float = 1: 
-	get:
-		return percent
+@export_range(0, 1, 0.1) var percent: float = 1.0: 
 	set(value):
 		percent = value
 		fg.set_size(Vector2(percent * size.x, size.y))
 
 func on_health_change(manager: HealthManager):
-	if not is_instance_valid(manager):
-		return
-
 	var max_health = float(manager.max_health)
 	var new_health = float(manager.health)
 	percent = new_health / max_health
@@ -60,13 +55,15 @@ func _instance_children():
 	fg = ColorRect.new()
 	fg.name = "Fg"
 	fg.color = foreground_color
-	fg.size = size
+	fg.set_size(Vector2(percent * size.x, size.y))
 	add_child(fg)
 
 func _ready():
 	resized.connect(_instance_children)
 	_instance_children()
 	if not Engine.is_editor_hint():
-		assert("health_manager" in node)
-		on_health_change(node.health_manager)
-		node.health_manager.on_health_change.connect(on_health_change)
+		node.ready.connect(func():
+			on_health_change(node.health_manager)
+			node.health_manager.on_health_change.connect(on_health_change)
+		)
+
