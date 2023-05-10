@@ -3,7 +3,7 @@ class_name ArcanaTasker extends Node
 signal done_with_tasks
 
 var _task_mutex := Mutex.new()
-var _current_task_loop: Callable
+var _current_task_loop # Callable or null
 
 # Shortcut method to add this node to a parent via
 # `@onready var tasker := ArcanaTasker.create_as_delegate(self)`
