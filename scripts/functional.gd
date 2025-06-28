@@ -25,3 +25,13 @@ static func debounce(callable: Callable, wait_time_s: float):
 			data.time = call_time
 			callable.call_deferred()
 	return f.bind({'time': -wait_time_s})
+	
+static func once(callable: Callable):
+	var f = func(data: Dictionary):
+		if data.has("activated"):
+			return
+			
+		data.activated = true
+		callable.call_deferred()
+		
+	return f.bind({})
